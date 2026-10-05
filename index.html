@@ -3,45 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>La meva TWA Personalitzada</title>
+  <title>TechHub - Recursos & Eines Web</title>
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    body { background-color: #fff3e0; }
-    .navbar { background-color: #f57c00; }
-    .btn-custom { background-color: #ffb74d; border: none; color: #000; }
-    footer { text-align: center; padding: 15px; background-color: #f57c00; color: white; margin-top: 30px; }
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --accent-blue: #38bdf8;
+      --accent-purple: #a855f7;
+      --text-main: #f8fafc;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar Estilitzada */
+    .navbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      border-bottom: 2px solid var(--accent-purple);
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--accent-blue) !important;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      color: #94a3b8 !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff !important;
+      background: rgba(56, 189, 248, 0.15);
+      border-bottom: 2px solid var(--accent-blue);
+    }
+
+    /* Targetes de contingut */
+    .custom-card {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .custom-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .badge-tag {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    /* Botons personalitzats */
+    .btn-neon {
+      background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 10px 20px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-neon:hover {
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
+      color: #fff;
+      transform: scale(1.02);
+    }
+
+    /* Estils de Modals */
+    .modal-content {
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border: 1px solid var(--accent-purple);
+      border-radius: 16px;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, #1e1b4b, var(--card-bg));
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: #090d16;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      padding: 18px;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand navbar-dark p-2">
-    <a href="#" class="navbar-brand">Les Meves Apps Web</a>
-    <ul class="navbar-nav nav ms-auto">
-      <li class="nav-item"><a href="#web1" class="nav-link active" data-bs-toggle="tab">Projecte 1</a></li>
-      <li class="nav-item"><a href="#web2" class="nav-link" data-bs-toggle="tab">Projecte 2</a></li>
-    </ul>
+
+  <!-- Barra de Navegació -->
+  <nav class="navbar navbar-expand p-3">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        ⚡ <span>TechHub TWA</span>
+      </a>
+      <ul class="navbar-nav nav ms-auto">
+        <li class="nav-item">
+          <a href="#tab1" class="nav-link active ms-1" data-bs-toggle="tab">💻 Desenvolupament</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2" class="nav-link ms-1" data-bs-toggle="tab">🌐 APIs & Xarxes</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab3" class="nav-link ms-1" data-bs-toggle="tab">🤖 Intel·ligència Artificial</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
-  <div class="tab-content p-4">
-    <div class="tab-pane active" id="web1">
-      <h3>🌐 Projecte 1</h3>
-      <p><b>Descripció:</b> Primera web personal integrada a Telegram.</p>
-      <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#popup1">Més informació</button>
-    </div>
-    <div class="tab-pane" id="web2">
-      <h3>📱 Projecte 2</h3>
-      <p><b>Descripció:</b> Aplicació d'integració d'APIs i automatització.</p>
-      <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#popup2">Més informació</button>
+  <!-- Contingut Principal -->
+  <div class="container my-4">
+    <div class="tab-content">
+
+      <!-- Pestanya 1 -->
+      <div class="tab-pane fade show active" id="tab1">
+        <div class="custom-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge-tag">Frontend & Backend</span>
+            <small class="text-muted">Actualitzat 2026</small>
+          </div>
+          <h3>💻 Desenvolupament Web Modern</h3>
+          <p class="text-secondary mt-2">
+            Explora les últimes tecnologies utilitzades per crear aplicacions web ràpides, escalables i adaptades a plataformes com Telegram.
+          </p>
+          <ul class="mt-3 text-light">
+            <li><strong>HTML5 & CSS3:</strong> Disseny responsive i mode fosc modern.</li>
+            <li><strong>JavaScript (ES6+):</strong> Lògica interactiva per a Telegram Web Apps.</li>
+            <li><strong>Frameworks:</strong> Bootstrap 5, Tailwind CSS i VueJS.</li>
+          </ul>
+          <button class="btn btn-neon mt-3" data-bs-toggle="modal" data-bs-target="#modal1">
+            Veure Detalls Tècnics
+          </button>
+        </div>
+      </div>
+
+      <!-- Pestanya 2 -->
+      <div class="tab-pane fade" id="tab2">
+        <div class="custom-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge-tag">Integració de Serveis</span>
+            <small class="text-muted">REST & JSON</small>
+          </div>
+          <h3>🌐 Integració d'APIs i Automatització</h3>
+          <p class="text-secondary mt-2">
+            Les APIs permeten connectar aplicacions web amb serveis externs de manera en temps real.
+          </p>
+          <ul class="mt-3 text-light">
+            <li><strong>Telegram Bot API:</strong> Comunicació directa entre el bot i la web.</li>
+            <li><strong>Consultes Asíncrones:</strong> Ús de <code>fetch()</code> per obtenir dades sense recarregar.</li>
+            <li><strong>Seguretat:</strong> Ús de claus d'autenticació privades (Tokens API).</li>
+          </ul>
+          <button class="btn btn-neon mt-3" data-bs-toggle="modal" data-bs-target="#modal2">
+            Explorar Arquitectura API
+          </button>
+        </div>
+      </div>
+
+      <!-- Pestanya 3 -->
+      <div class="tab-pane fade" id="tab3">
+        <div class="custom-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge-tag">Futur & Innovació</span>
+            <small class="text-muted">AI Tools</small>
+          </div>
+          <h3>🤖 Eines d'Intel·ligència Artificial</h3>
+          <p class="text-secondary mt-2">
+            Integració d'eines basades en IA per millorar la producció de codi i l'experiència d'usuari.
+          </p>
+          <ul class="mt-3 text-light">
+            <li><strong>Assistents de Codi:</strong> Generació de scripts automatitzats i optimització HTML.</li>
+            <li><strong>Automatització de Respostes:</strong> Processament de llenguatge natural.</li>
+          </ul>
+          <button class="btn btn-neon mt-3" data-bs-toggle="modal" data-bs-target="#modal3">
+            Veure Recursos IA
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="modal fade" id="popup1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog"><div class="modal-content"><div class="modal-body">Detalls del Projecte 1 realitzat amb Bootstrap.</div></div></div>
-  </div>
-  <div class="modal fade" id="popup2" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog"><div class="modal-content"><div class="modal-body">Detalls del Projecte 2 que utilitza crides API.</div></div></div>
+  <!-- POPUPS (Modals) -->
+  <div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-info">💻 Detalls de Desenvolupament</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Aquesta Telegram Web App utilitza una estructura modular basada en Bootstrap 5 amb una capa de personalització CSS estil *Dark Neon* per adaptar-se a les interfícies modernes.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <footer>Creada per [El teu nom] | TWA 2026</footer>
+  <div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-info">🌐 Detalls d'APIs</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Permet la transferència de dades JSON estructurades. Mitjançant crides HTTP/HTTPS, el bot pot enviar informació i rebre la resposta de l'usuari a través de la Web App.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-info">🤖 Detalls de Recursos IA</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Implementació de chatbots i assistents interactius integrats en l'entorn de Telegram per a tasques d'automatització i consulta de dades.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Peu de pàgina -->
+  <footer>
+    Desenvolupat per <strong>Sahi Muhammad Rooman</strong> | Telegram Web App 2026
+  </footer>
+
+  <!-- JS de Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
